@@ -1,0 +1,48 @@
+spring:
+ application:
+  name: reports
+  
+# ===============================
+# = JPA configurations
+# ===============================
+ jpa:
+  database-platform: org.hibernate.dialect.Oracle10gDialect
+  show-sql: true
+  
+# ===============================
+# = Hibernate datasource
+# ===============================
+
+ datasource:  
+  jdbc-url: jdbc:mysql://54.196.163.190:3306/db 
+  username: root
+  password: password
+  #driver-class-name: oracle.jdbc.OracleDriver 
+  #name: ANALYZER 
+  
+ seconddatasource:  
+  jdbc-url: jdbc:mysql://54.196.163.190:3306/db
+  username: root
+  password: password
+  #driver-class-name: oracle.jdbc.OracleDriver
+  #name: CITISEARCH 
+   
+#jasypt:  
+ # encryptor:
+  # password: dev
+
+#Need to be checked  
+server:  
+ servlet:
+  context-path: /Tennis    
+---
+spring:
+ profiles: dev
+server:
+ port: 9090 
+---
+
+spring:
+ profiles: uat
+server:
+ port: 7071
