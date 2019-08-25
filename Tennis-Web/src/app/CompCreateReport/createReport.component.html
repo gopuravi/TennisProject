@@ -1,0 +1,33 @@
+
+    <div class="row">
+      <div class="col-sm-5 form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          #nameInput>
+      </div>
+     
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-success" type="submit" (click)="onAddReport()">Add</button>
+        <button class="btn btn-danger" type="button" (click)="onDeleteReport()">Delete</button>
+        <button class="btn btn-primary" type="button" (click)="onGetMessage()">getMessage</button>
+      </div>
+    </div>
+
+
+  <div>
+    <ul class="list-group">
+        <li  *ngFor="let name of appData.reportlist" class="list-group-item" >
+            {{ name }}
+          </li>
+        </ul>
+  </div>
+<!--   <div class="alert alert-danger" *ngIf="error">
+      <h3>An Error Occured</h3>
+      <p>{{ error }}</p>
+
+  </div> -->

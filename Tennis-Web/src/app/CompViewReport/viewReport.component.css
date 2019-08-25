@@ -1,0 +1,11 @@
+.cs-bottom-padding {    
+    padding-bottom: 10px
+  }
+
+  .cs-top-padding {    
+    padding-top: 10px
+  }
+  .cs-right-align{
+    display: flex;
+    justify-content: flex-end;
+  }

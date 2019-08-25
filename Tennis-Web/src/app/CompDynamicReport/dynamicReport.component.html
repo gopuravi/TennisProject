@@ -1,0 +1,49 @@
+<div class="form-group">
+
+  <div Class="row">
+    <label Class="col-sm-8" >Dynamic Report </label>  
+    <div Class="row col-sm-4 cs-bottom-padding">
+      <label Class="col-sm-6 "  > Connection Name  </label> 
+      <select #selectConnection [(ngModel)]="selectedConnection" class="form-control  col-sm-6 "  max-width="100px"   title="Select the Connection" 
+      data-size="10"> 
+        <option >ANALYZER</option>
+        <option >CITISEARCH</option>      
+      </select>
+    </div>
+  </div>
+  
+  <div  >
+    <textarea class="form-control cs-bottom-padding"  id="dynamicSQLInp" rows="3"
+    #dynamicSQLInput></textarea>
+    <div  class="cs-top-padding cs-right-align">
+      <button class="btn btn-success" type="button" (click)="onExecuteReport()">Execute</button> &nbsp;&nbsp;
+      <button class="btn btn-danger " type="button" (click)="onCancelReport()">Cancel</button>
+    </div>
+    </div>
+  </div>
+
+  
+
+
+
+<ag-grid-angular  
+style="width: 100%; height: 100%;" 
+class="ag-theme-balham"
+[rowData]="rowData" 
+[columnDefs]="columnDefs"
+></ag-grid-angular>
+
+
+
+ 
+
+    
+  
+
+
+
+
+
+
+
+
