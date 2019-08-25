@@ -45,7 +45,7 @@ public class ReportController  {
 	@ResponseBody
 	public String getMessage() {
 		System.out.println("inside dashboard 1");
-		return "csalayout123";
+		return "The tennis app getting Ready";
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, path="/reportList")
