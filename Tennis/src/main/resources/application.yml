@@ -14,14 +14,14 @@ spring:
 # ===============================
 
  datasource:  
-  jdbc-url: jdbc:mysql://54.196.163.190:3306/db 
+  jdbc-url: jdbc:mysql://localhost:3306/tennis 
   username: root
   password: password
   #driver-class-name: oracle.jdbc.OracleDriver 
   #name: ANALYZER 
   
  seconddatasource:  
-  jdbc-url: jdbc:mysql://54.196.163.190:3306/db
+  jdbc-url: jdbc:mysql://localhost:3306/tennis
   username: root
   password: password
   #driver-class-name: oracle.jdbc.OracleDriver
