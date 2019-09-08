@@ -19,8 +19,8 @@ export class dynamicReportComponenet implements OnInit{
    reportList:Array<string>;
    columnDefs=[];
    rowData=[]; 
-    selectedConnection:any;
-    
+    selectedConnection:any="ANALYZER";
+    errorObj: any = null;
     
 
     @ViewChild('dynamicSQLInput', { static: false }) dynamicSQLInputRef: ElementRef;    
@@ -36,7 +36,7 @@ export class dynamicReportComponenet implements OnInit{
 
     } 
     getConnectionList(){
-/*        this.appDataService.getConnectionList().subscribe( responseData=>{
+        this.appDataService.getConnectionList().subscribe( responseData=>{
 
             var data = JSON.stringify(responseData);
             let option;
@@ -52,19 +52,21 @@ export class dynamicReportComponenet implements OnInit{
             this.logService.error("check " + error.message); 
         });
         this.logService.log("inside createReport" + this.appData.reportlist); 
-        */
+        
     }
 
     onExecuteReport() {    
         console.log("selectedConnection..."  + this.selectedConnection);          
        var dynamicSQLInput = this.dynamicSQLInputRef.nativeElement.value;
         this.appDataService.runDynamicReport(dynamicSQLInput,this.selectedConnection).subscribe(responseData=>{
+          console.log("The response data is", responseData);
             this.columnDefs=responseData[0];
             this.rowData=responseData[1];
         },error =>{
-            this.logService.error("check " + error.message); 
-        });
-        this.logService.log("inside createReport" + this.appData.reportlist);     
+          this.errorObj=error;
+            this.logService.error("inside onExecuteReport " + error.message); 
+        }); 
+         
        // columnDefs = this.appData.dynamicReportHeader; */
       } 
 
@@ -78,6 +80,10 @@ export class dynamicReportComponenet implements OnInit{
           { connectionId: '2', connectionName: 'CITISEARCH' },
 
         ];
+      }
+
+      onHandleError() {
+        this.errorObj = null;
       }
  
 }

@@ -1,33 +1,43 @@
-import { BrowserModule } from '@angular/platform-browser';
+// Angular Base Modules
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-
-
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AgGridModule } from 'ag-grid-angular';
+import { BrowserModule } from '@angular/platform-browser';
 
+// Appl;cation Module
+import { AppComponent } from './app.component';
+import { headerComponenet } from './CompHeader/header.component';
 import { viewReportComponenet } from './CompViewReport/viewReport.component';
 import { createReportComponenet } from './CompCreateReport/createReport.component';
-import { headerComponenet } from './CompHeader/header.component';
-import { AppDataService } from './service/AppData.service';
-import { AppData } from './model/AppData.model';
-import { LoggingService } from './service/Logging.service';
 import { dynamicReportComponenet } from './CompDynamicReport/dynamicReport.component';
-import { ReportNameFilter } from './pipe/reportNameFilter.pipe';
+import { AppDataService } from './service/AppData.service';
+import { LoggingService } from './service/Logging.service'; 
+import { AppData } from './model/AppData.model';
+
+//import { ReportNameFilter } from './pipe/reportNameFilter.pipe';
+
+// Add on Modules
+import { AgGridModule } from 'ag-grid-angular';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { QueryBuilderModule } from "angular2-query-builder";
+import { sqlBuilderComponenet } from './CompSqlBuilder/sqlBuilder.component';
+import { AlertCompoenent } from './CompShared/CompAlert/alert.componenet';
 
 
 
-@NgModule({
+
+
+@NgModule({ 
   declarations: [
-    AppComponent,
-    headerComponenet,
-    viewReportComponenet,
-    createReportComponenet,
-    dynamicReportComponenet,
-    ReportNameFilter
+    AppComponent
+    ,headerComponenet
+    ,viewReportComponenet
+    ,createReportComponenet
+    ,dynamicReportComponenet
+    ,sqlBuilderComponenet
+    ,AlertCompoenent
+    //,ReportNameFilter 
 
   ],
   imports: [
@@ -36,6 +46,8 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     FormsModule,
     NgbTypeaheadModule,
+    QueryBuilderModule,
+    
     AgGridModule.withComponents([])
     
   ],

@@ -39,28 +39,32 @@ export class AppDataService {
         },error =>{
             this.logService.error("check " + error.message);
         })
-    } 
+    }
 
     getConnectionList(){        
         return this.http.get(this.constant.URL_GET_CONNECTION_LIST)
     }
 
-    runDynamicReport(dynamicReportSQL:string,selectedConnection:string){
-        let data = {"dynamicReportSQL": dynamicReportSQL,"selectedConnection": selectedConnection};
-        return this.http.get(this.constant.URL_GET_DYNAMIC_REPORT,{params: data})
-       /* .subscribe(responseData=>{
-            this.appData.dynamicReportHeader=responseData[0];
-            this.appData.dynamicReportResult=responseData[1];
-            this.logService.log(this.appData.dynamicReportHeader);
-            this.logService.log(this.appData.dynamicReportResult);
-        },error =>{
-            this.logService.error("check " + error.message);
-        })*/
+    getmessage(){        
+        return this.http.get(this.constant.URL_GET_MESSAGE)
     }
 
-    runStaticReport(reportIdentifier:string,){
-        let data = {"reportIdentifier": reportIdentifier};
-        return this.http.get(this.constant.URL_GET_STATIC_REPORT,{params: data})
+    runDynamicReport(dynamicReportSQL:string,selectedConnection:string){
+        let data = {"dynamicReportSQL": dynamicReportSQL,"selectedConnection": selectedConnection};
+        return this.http.get(this.constant.URL_GET_DYNAMIC_REPORT,{params: data})       
+    }
+
+    runStaticReport(reportIdentifier:string , filter:any){
+        let data = {"reportIdentifier": reportIdentifier  , "filter":filter};
+        console.log( "the data sent to the server is ",data);
+         return this.http.post(this.constant.URL_GET_STATIC_REPORT,data,{params: data});
+        //return this.http.get(this.constant.URL_GET_STATIC_REPORT,{params: data})
+       
+    }
+
+    getFilterConfig(reportIdentifier:string){ 
+        let data = {"reportIdentifier": reportIdentifier }; 
+        return this.http.get(this.constant.URL_GET_FILTER_CONFIG, {params: data})    
        
     }
 

@@ -22,19 +22,26 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
-            ], 
+            ],   
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-select/dist/css/bootstrap-select.min.css",
-              "node_modules/ag-grid-community/dist/styles/ag-theme-balham.css",
-              "src/styles.css"
-            ],
+              { "input": "node_modules/bootstrap/dist/css/bootstrap.min.css" },
+
+              { "input": "node_modules/ag-grid-community/dist/styles/ag-theme-balham.css"  },
+              { "input": "node_modules/ag-grid-community/dist/styles/ag-theme-dark.css"  },
+              { "input": "node_modules/ag-grid-community/dist/styles/ag-theme-blue.css"  }, 
+              { "input": "node_modules/@fortawesome/fontawesome-free/css/all.min.css"  }, 
+            //  { "input": "node_modules/@fortawesome/fontawesome-free/css/free-solid-svg-icons/"  },  
+
+              
+            
+              "src/styles.css"   
+            ],  
             "scripts": [
-              "node_modules/bootstrap-select/dist/js/bootstrap-select.min.js",
-              "node_modules/jquery/dist/jquery.min.js"
+          
+              "node_modules/jquery/dist/jquery.min.js"   
             ]
           },
-          "configurations": {
+          "configurations": { 
             "production": {
               "fileReplacements": [
                 {

@@ -1,0 +1,12 @@
+<div class="backdrop" (click)="onClose()"></div>
+<div class="alert-box">
+
+    
+  <p *ngIf="message"> Message : {{ message }}</p>
+  <p *ngIf="statusCode || statusCode===0" > Status Code :{{ statusCode }}</p>
+  <p *ngIf="statusText">Status Text :{{ statusText }}</p>
+  <p *ngIf="serviceUrl">Service Url :{{ serviceUrl }}</p>
+  <div class="alert-box-actions">
+    <button class="btn btn-primary" (click)="onClose()">Close</button>  
+  </div>
+</div>   

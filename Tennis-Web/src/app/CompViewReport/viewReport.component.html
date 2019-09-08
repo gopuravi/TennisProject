@@ -1,8 +1,3 @@
-This is View Report Component1
-
-
-
-
      <div class="form-group">
 
           <ng-template  class="form-control" #rt let-r="result" let-t="term">
@@ -11,25 +6,55 @@ This is View Report Component1
           </ng-template>
         
         <input id="typeahead-http" type="text" class="form-control" [class.is-invalid]="searchFailed" 
-        [(ngModel)]="selectedReport" [ngbTypeahead]="search" placeholder="Search available reports" [inputFormatter]="formatter" [resultTemplate]="rt" />
+        [(ngModel)]="selectedReport" [ngbTypeahead]="search" placeholder="Search available reports" [inputFormatter]="formatter" [resultTemplate]="rt"
+        (selectItem)="onReportSelection($event)" />
         <span *ngIf="searching">searching...</span>
         <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
       </div>
-
+ 
       <div  class="cs-right-align">
           <button class="btn btn-success" type="button" (click)="onExecuteReport()">Execute</button> &nbsp;&nbsp;
-          <button class="btn btn-danger " type="button" (click)="onCancelReport()">Cancel</button>
+          <button class="btn btn-danger " type="button" (click)="onCancelReport()">Clear</button> 
         </div>
+      <alertSel [errorObj]="errorObj"
+      *ngIf="errorObj"
+      (close)="onHandleError()" >
+
+      </alertSel> 
+
+        
+        
+     <!-- <pre>Model: {{ selectedReport | json }}</pre> 
+   <sqlBuilderSel #sqlBuilder   > </sqlBuilderSel>
+    -->
+    
+    <span class="cs-top-margin"></span> 
+    <div  >
+      <div *ngIf="ifFilterConfigLoaded; else ifFilterConfigNotLoaded">
+          
+            <sqlBuilderSel #sqlBuilder [config]= 'filterConfig' > </sqlBuilderSel>
+            <span class="cs-top-margin"></span> 
+      <!--  {{filterConfig | json }} -->
+      </div>       
+      <ng-template #ifFilterConfigNotLoaded>
+  
+        <div class="alert alert-danger">
+            <p> Select report to load the filter</p>
+        </div> 
+      </ng-template>
+    </div>
       
-      <hr>
-      <pre>Model: {{ model | json }}</pre>
-
-      <ag-grid-angular  
+    
+    <ag-grid-angular  
 style="width: 100%; height: 100%;" 
-class="ag-theme-balham"
+class="ag-theme-fresh"  
 [rowData]="rowData" 
-[columnDefs]="columnDefs"
-></ag-grid-angular>
+[columnDefs]="columnDefs" 
+rowSelection="multiple"
+pagination= true     
+paginationPageSize=100
+></ag-grid-angular> 
 
-   
+
+    
 

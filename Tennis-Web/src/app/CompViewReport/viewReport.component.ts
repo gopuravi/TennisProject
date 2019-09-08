@@ -1,4 +1,4 @@
-import { Component, OnInit , ViewChild} from '@angular/core';
+import { Component, OnInit , ViewChild, ElementRef} from '@angular/core';
 import { AppDataService } from '../service/AppData.service';
 import { LoggingService } from '../service/Logging.service'
 import { AppData } from '../model/AppData.model';
@@ -9,8 +9,13 @@ import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap,filt
 
 
 
-import {NgbTypeahead, NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
 
+import {NgbTypeahead, NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
+import { sqlBuilderComponenet } from '../CompSqlBuilder/sqlBuilder.component';
+import {  AlertCompoenent } from '../CompShared/CompAlert/alert.componenet';
+import { Constant } from '../model/Constant.model';
+
+const METHOD_ON_EXECUTE_REPORT:string="onExecuteReport";
 
  
 @Component({
@@ -21,8 +26,13 @@ import {NgbTypeahead, NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
 
 })
 
-export class viewReportComponenet implements OnInit{ 
 
+
+export class viewReportComponenet implements OnInit{ 
+  @ViewChild(sqlBuilderComponenet, {static: false}) sqlBuilderRef; 
+
+  
+  
 
    appData:AppData=AppData.Instance;
 
@@ -32,19 +42,19 @@ export class viewReportComponenet implements OnInit{
   searchFailed = false;
   columnDefs=[];
   rowData=[]; 
-    
+  ifFilterConfigLoaded=false;
+  filterConfig:any;
   
+  errorObj: any = null;
+  private constant:Constant=Constant.Instance;
 
    constructor(private appDataService:AppDataService , private  logService:LoggingService){
        console.log("inside view report Constructor  ");
      
    }
    
-    ngOnInit(){ 
-        
-       
+    ngOnInit(){                
         console.log("Inside View Component Init4 " + this.selectedReport );
-
     }
 
     search = (text$: Observable<string>) =>
@@ -65,20 +75,82 @@ export class viewReportComponenet implements OnInit{
 
     formatter = (x: {displayName: string}) => x.displayName;
 
-    onExecuteReport() {    
-        console.log("selectedConnection..."  + this.selectedReport.reportIdentifier   );           
-        this.appDataService.runStaticReport(this.selectedReport.reportIdentifier).subscribe(responseData=>{
+    ValidateInput(methodName:String){
+      let errormsg:string;
+      if(methodName==METHOD_ON_EXECUTE_REPORT){
+ 
+         if(!this.selectedReport ||  !this.selectedReport.reportIdentifier){ 
+           errormsg=this.constant.ERR_REPORT_NOT_SELECTED; 
+         }          
+      }
+
+      if(errormsg)
+        this.errorObj={"message": errormsg } 
+
+    }
+ 
+    onExecuteReport() {       
+      this.ValidateInput(METHOD_ON_EXECUTE_REPORT);
+      
+       let filter:any
+
+       if(this.sqlBuilderRef)
+          filter=this.sqlBuilderRef.query;
+
+       console.log("The filter is ", filter);     
+        this.appDataService.runStaticReport(this.selectedReport.reportIdentifier , filter).subscribe(responseData=>{
+          console.log("The report data is",responseData);
+
+
           this.columnDefs=responseData[0];
           this.rowData=responseData[1];
       },error =>{
+          this.errorObj=error;
+          this.logService.error("check " + error.message);  
+      });      
+      } 
+
+      onReportSelection(selectedItem){ 
+        this.ifFilterConfigLoaded=false;   
+        console.log(selectedItem.item.reportIdentifier);
+       // console.log("config" , this.sqlBuilderRef.config )    
+        this.appDataService.getFilterConfig(selectedItem.item.reportIdentifier).subscribe(responseData=>{
+ 
+          let pusheditems = {};
+          for (let keys of Object.keys(responseData)) {
+            //console.log("object:", responseData[keys]);   
+           
+           
+         pusheditems[keys] = responseData[keys];
+          
+          }
+ 
+          this.filterConfig ={fields:  pusheditems };  
+          this.ifFilterConfigLoaded=true;  
+         // Object.assign(this.sqlBuilderRef.config, filterConfig)
+          
+          //this.sqlBuilderRef.cofig.fields =      pusheditems;  
+             
+        //console.log("config" , this.sqlBuilderRef.config )
+         //console.log ( JSON.stringify(responseData[0]) )  
+          console.log(this.filterConfig  );
+          
+      },error =>{
           this.logService.error("check " + error.message); 
       });
-
-      
+    
       } 
 
       onCancelReport() {    
+        this.selectedReport="";
+        this.ifFilterConfigLoaded=false;
+        this.columnDefs=[];
+        this.rowData=[]; 
        console.log("To be Implemented");        
       }
 
-}
+      onHandleError() {
+        this.errorObj = null;
+      }
+    
+} 

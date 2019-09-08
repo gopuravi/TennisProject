@@ -11,6 +11,7 @@ import { LoggingService } from '../service/Logging.service'
 export class createReportComponenet implements OnInit{
     appData:AppData=AppData.Instance;
     reportList:Array<string>;
+    errorObj:any;
     @ViewChild('nameInput', { static: false }) nameInputRef: ElementRef;
      
     constructor(private appDataService:AppDataService , private  loggingService:LoggingService){
@@ -33,10 +34,21 @@ export class createReportComponenet implements OnInit{
       onDeleteReport(){
         //this.appDataService.addReport({"name":"Report1", "sql":"test"});
       }
+
       onGetMessage(){
-      
-        this.appDataService.getReportList();
+        this.appDataService.getmessage().subscribe(responseData=>{
+          console.log("The report data is",responseData);          
+      },error =>{
+        this.errorObj=error;
+       // this.errorObj={"message":  error.error.message,"status":  error.status,"statusText":  error.statusText,"serviceUrl":  error.url}
+            this.loggingService.log( this.errorObj.error.message); 
+           
+             
+      });;
       }
 
+      onHandleError() {
+        this.errorObj = null;
+      }
  
 }

@@ -1,11 +1,15 @@
 .cs-bottom-padding {    
-    padding-bottom: 10px
+    padding-bottom: 5 px;
   }
 
-  .cs-top-padding {    
-    padding-top: 10px
+  .cs-top-margin {     
+    margin-top: 2px;
+    display:inline-block;
+    background-color: dimgrey;  
   }
+
   .cs-right-align{
     display: flex;
     justify-content: flex-end;
   }
+

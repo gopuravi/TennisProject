@@ -6,8 +6,8 @@
       <label Class="col-sm-6 "  > Connection Name  </label> 
       <select #selectConnection [(ngModel)]="selectedConnection" class="form-control  col-sm-6 "  max-width="100px"   title="Select the Connection" 
       data-size="10"> 
-        <option >ANALYZER</option>
-        <option >CITISEARCH</option>      
+        <option  >ANALYZER</option>
+        <option > CITISEARCH</option>      
       </select>
     </div>
   </div>
@@ -22,16 +22,27 @@
     </div>
   </div>
 
+    <ag-grid-angular  
+style="width: 100%; height: 100%;" 
+class="ag-theme-fresh"  
+[rowData]="rowData" 
+[columnDefs]="columnDefs" 
+rowSelection="multiple"
+pagination= true     
+paginationPageSize=100
+></ag-grid-angular> 
+
+
+  <alertSel [errorObj]="errorObj"
+  *ngIf="errorObj"
+  (close)="onHandleError()" >
+
   
 
 
 
-<ag-grid-angular  
-style="width: 100%; height: 100%;" 
-class="ag-theme-balham"
-[rowData]="rowData" 
-[columnDefs]="columnDefs"
-></ag-grid-angular>
+
+
 
 
 

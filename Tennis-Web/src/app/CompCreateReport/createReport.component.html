@@ -18,6 +18,11 @@
       </div>
     </div>
 
+    <alertSel [errorObj]="errorObj"
+    *ngIf="errorObj"
+    (close)="onHandleError()" >
+
+    </alertSel>
 
   <div>
     <ul class="list-group">
