@@ -12,20 +12,20 @@ spring:
 # ===============================
 # = Hibernate datasource
 # ===============================
-
- datasource:  
-  jdbc-url: jdbc:mysql://localhost:3306/tennis 
-  username: root
-  password: password
-  #driver-class-name: oracle.jdbc.OracleDriver 
-  #name: ANALYZER 
+ datasources:
+  datasource-1:  
+   jdbc-url: jdbc:oracle:thin:@oraasswd14-scan.nam.nsroot.net:8889/CSANA1D
+   username: CADENT
+   password: Madrid92
+   driver-class-name: oracle.jdbc.OracleDriver 
+   name: ANALYZER 
   
- seconddatasource:  
-  jdbc-url: jdbc:mysql://localhost:3306/tennis
-  username: root
-  password: password
-  #driver-class-name: oracle.jdbc.OracleDriver
-  #name: CITISEARCH 
+  datasource-2:  
+   jdbc-url: jdbc:oracle:thin:@oraasgtd34-scan.nam.nsroot.net:8889/CSFIN1D
+   username: CSFIN_RCM_EXT
+   password: Puding10
+   driver-class-name: oracle.jdbc.OracleDriver
+   name: CITISEARCH 
    
 #jasypt:  
  # encryptor:
@@ -34,12 +34,13 @@ spring:
 #Need to be checked  
 server:  
  servlet:
-  context-path: /Tennis    
+  context-path: /reports    
 ---
 spring:
  profiles: dev
 server:
- port: 9090 
+ port: 9090
+ address: 10.108.144.30
 ---
 
 spring:
