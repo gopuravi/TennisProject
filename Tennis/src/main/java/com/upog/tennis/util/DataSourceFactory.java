@@ -1,4 +1,4 @@
-package com.citi.report.util;
+package com.upog.tennis.util;
 
 import java.util.ArrayList;
 
@@ -14,12 +14,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.citi.report.dao.ConnectionDaoImpl;
-import com.citi.report.repository.ConnectionRepository;
+import com.upog.tennis.dao.ConnectionDaoImpl;
+import com.upog.tennis.repository.ConnectionRepository;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 
-import com.citi.report.model.Connection;
+import com.upog.tennis.model.Connection;
 
 @Configuration
 public class DataSourceFactory implements BeanFactoryAware {
@@ -31,7 +31,12 @@ public class DataSourceFactory implements BeanFactoryAware {
 		
 	public void loadConnection(){
 		if(connectionList==null) {
-			connectionList=(ArrayList<Connection>) connectionDaoImpl.retrieveAllConnection();
+			connectionList= new ArrayList<Connection>(); 
+					//(ArrayList<Connection>) connectionDaoImpl.retrieveAllConnection();
+			Connection connection = new Connection(1, "DBTENNIS",
+					"jdbc:mysql://tennis.cnx63aff1prh.us-east-1.rds.amazonaws.com:3306/tennis",
+					"admin","tennis123"); 
+			connectionList.add(connection); 
 		}
 		
 		System.out.println("The connecion list " + connectionList);
@@ -78,7 +83,7 @@ public class DataSourceFactory implements BeanFactoryAware {
      }
 	
 	
-    @Bean(name="dsCustom")
+   /* @Bean(name="dsCustom")
     public DataSource dataSource() {
         return DataSourceBuilder
                 .create()
@@ -97,5 +102,5 @@ public class DataSourceFactory implements BeanFactoryAware {
     @Autowired
     public JdbcTemplate jdbcTemplate(@Qualifier("dsCustom") DataSource dsCustom) {
         return new JdbcTemplate(dsCustom);
-    } 
+    } */ 
 }

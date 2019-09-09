@@ -1,21 +1,52 @@
 package com.upog.tennis.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "CONNECTION_DETAILS")
 public class Connection {
+	@Id 
+	@Column(name = "CONNECTION_ID")
 	int connectionId;
+	@Column(name = "CONNECTION_NAME")
 	String connectionName;
-	String connectionDescription;
-	String connectionUrl;
+	@Column(name = "COMMENTS")
+	String comments;
+	@Column(name = "JDBC_URL")
+	String jdbcUrl;
+	@Column(name = "USER_ID")
 	String userName;
-	String driver;
+
+	@Column(name = "SERVICE_NAME")
+	String serviceName;
+	@Column(name = "ENCRYPTED_PASSWORD")
 	String password;
-	
-	private Connection() {}
+	@Column(name = "DRIVER_NAME")
+	String driverName;
+	@Column(name = "FL_ACTIVE")
+	boolean isActive;
+	@Column(name = "HOST_NAME")
+	String hostname;
+	@Column(name = "PORT_NO")
+	int portNo; 
+
+	public Connection(int connectionId, String connectionName, String jdbcUrl, String userName, String password) {
+		super();
+		this.connectionId = connectionId;
+		this.connectionName = connectionName;
+		this.jdbcUrl = jdbcUrl;
+		this.userName = userName;
+		this.password = password;
+	}
+	public Connection() {}
 	public Connection(int connectionId, String connectionName) {
 		super();
 		this.connectionId = connectionId;
 		this.connectionName = connectionName;
 	}
-	
 	public int getConnectionId() {
 		return connectionId;
 	}
@@ -28,17 +59,17 @@ public class Connection {
 	public void setConnectionName(String connectionName) {
 		this.connectionName = connectionName;
 	}
-	public String getConnectionDescription() {
-		return connectionDescription;
+	public String getComments() {
+		return comments;
 	}
-	public void setConnectionDescription(String connectionDescription) {
-		this.connectionDescription = connectionDescription;
+	public void setComments(String comments) {
+		this.comments = comments;
 	}
-	public String getConnectionUrl() {
-		return connectionUrl;
+	public String getJdbcUrl() {
+		return jdbcUrl;
 	}
-	public void setConnectionUrl(String connectionUrl) {
-		this.connectionUrl = connectionUrl;
+	public void setJdbcUrl(String jdbcUrl) {
+		this.jdbcUrl = jdbcUrl;
 	}
 	public String getUserName() {
 		return userName;
@@ -46,11 +77,12 @@ public class Connection {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getDriver() {
-		return driver;
+
+	public String getServiceName() {
+		return serviceName;
 	}
-	public void setDriver(String driver) {
-		this.driver = driver;
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
 	}
 	public String getPassword() {
 		return password;
@@ -58,6 +90,37 @@ public class Connection {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	public String getDriverName() {
+		return driverName;
+	}
+	public void setDriverName(String driverName) {
+		this.driverName = driverName;
+	}
+	public boolean isActive() {
+		return isActive;
+	}
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+	public String getHostname() {
+		return hostname;
+	}
+	public void setHostname(String hostname) {
+		this.hostname = hostname;
+	}
+	public int getPortNo() {
+		return portNo;
+	}
+	public void setPortNo(int portNo) {
+		this.portNo = portNo;
+	}
+	@Override
+	public String toString() {
+		return "Connection [connectionId=" + connectionId + ", connectionName=" + connectionName + ", comments="
+				+ comments + ", jdbcUrl=" + jdbcUrl + ", userName=" + userName + ", serviceName=" + serviceName
+				+ ", password=" + password + ", driverName=" + driverName + ", isActive=" + isActive + ", hostname="
+				+ hostname + ", portNo=" + portNo + "]";  
+	}
+
 
 }

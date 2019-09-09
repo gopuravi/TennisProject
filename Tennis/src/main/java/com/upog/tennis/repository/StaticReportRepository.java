@@ -25,7 +25,7 @@ public class StaticReportRepository {
 	@Autowired
 	private JdbcTemplate dataSource1JdbcTemplate;
 	
-
+  //  public Map<String,String> getConditionMappingforReport()
 	
 	public List<List<Map<String,Object>>> getStaticReport(String connectionName,String reportSQL){
 		
@@ -46,6 +46,7 @@ public class StaticReportRepository {
 			result.add(resultData);
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw e;
 		}
 		 
 		 return result;
@@ -57,12 +58,12 @@ public class StaticReportRepository {
 			   Map<String,Object> column= new HashMap<String,Object>();
 			   column.put(Constant.GRID_JSON_HEADER_NAME,Util.toCamelCase(columnHeader));
 			   column.put(Constant.GRID_JSON_HEADER_FIELD,columnHeader);
-			   column.put(Constant.GRID_JSON_HEADER_SORT,Constant.TRUE);
-			   column.put(Constant.GRID_JSON_HEADER_FILTER,Constant.TRUE);
+			   column.put(Constant.GRID_JSON_HEADER_SORT,Constant.TRUE_BOOLEAN);
+			   column.put(Constant.GRID_JSON_HEADER_FILTER,Constant.TRUE_BOOLEAN);
 			   result.add(column);
 			}
 		System.out.println("Header --> " + result);
-		return result;
+		return result; 
 		
 	}
 

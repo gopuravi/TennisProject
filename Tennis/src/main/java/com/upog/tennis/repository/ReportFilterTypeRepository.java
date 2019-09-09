@@ -1,9 +1,9 @@
-package com.citi.report.repository;
+package com.upog.tennis.repository;
 
 import org.springframework.stereotype.Repository;
 
 
-import com.citi.report.model.ReportFilterType;
+import com.upog.tennis.model.ReportFilterType;
 
 import java.util.List;
 

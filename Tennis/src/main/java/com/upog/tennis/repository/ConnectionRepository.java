@@ -1,8 +1,8 @@
-package com.citi.report.repository;
+package com.upog.tennis.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.citi.report.model.Connection;
+import com.upog.tennis.model.Connection;
 
 
 

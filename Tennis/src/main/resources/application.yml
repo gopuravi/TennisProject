@@ -14,18 +14,12 @@ spring:
 # ===============================
  datasources:
   datasource-1:  
-   jdbc-url: jdbc:oracle:thin:@oraasswd14-scan.nam.nsroot.net:8889/CSANA1D
-   username: CADENT
-   password: Madrid92
-   driver-class-name: oracle.jdbc.OracleDriver 
-   name: ANALYZER 
+   jdbc-url: jdbc:mysql://tennis.cnx63aff1prh.us-east-1.rds.amazonaws.com:3306/tennis
+   username: admin
+   password: tennis123
+   name: DBTENNIS 
   
-  datasource-2:  
-   jdbc-url: jdbc:oracle:thin:@oraasgtd34-scan.nam.nsroot.net:8889/CSFIN1D
-   username: CSFIN_RCM_EXT
-   password: Puding10
-   driver-class-name: oracle.jdbc.OracleDriver
-   name: CITISEARCH 
+
    
 #jasypt:  
  # encryptor:
@@ -34,13 +28,13 @@ spring:
 #Need to be checked  
 server:  
  servlet:
-  context-path: /reports    
+  context-path: /tennis    
 ---
 spring:
  profiles: dev
 server:
  port: 9090
- address: 10.108.144.30
+
 ---
 
 spring:

@@ -18,7 +18,7 @@ public interface ReportDataFieldsRepository extends JpaRepository<ReportDataFiel
     List<ReportDataFields> retrieveFieldsbyReportId(@Param("id") int id);
 	
 	@Query(value="select F.* from REPORT_DATA_FIELDS F inner join REPORT_DATA_SOURCES s on f.REPORT_INTERNAL_ID=s.REPORT_INTERNAL_ID where s.REPORT_IDENTIFIER = :name ", nativeQuery=true)   
-    List<ReportDataFields> retrieveFieldsbyReportName(@Param("name") String name);
+    List<ReportDataFields> retrieveFieldsbyReportIdentifier(@Param("name") String name);
 	 
 	/* To use Native SQL
 	@Query(value="select F.REPORT_FIELDS_INTERNAL_ID,F.REPORT_INTERNAL_ID,F.DISPLAY_NAME,F.DISPLAY_ORDER,F.FIELD_LENGTH,F.FIELD_NAME,F.FIELD_TYPE,F.FL_DEFAULTSORT,F.FL_FILTER,F.FL_HIDE,F.FL_PERIOD from REPORT_DATA_FIELDS f where f.REPORT_INTERNAL_ID = ?1", nativeQuery=true)

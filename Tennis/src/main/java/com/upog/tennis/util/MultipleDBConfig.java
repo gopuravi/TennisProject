@@ -1,4 +1,5 @@
 package com.upog.tennis.util;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,10 +18,10 @@ public class MultipleDBConfig {
 
 	@Bean
 	@Primary
-	@ConfigurationProperties(prefix = "spring.datasource")
+	@ConfigurationProperties(prefix = "spring.datasources.datasource-1")
 	public DataSource dataSource1() {
 		return DataSourceBuilder.create().build();
-	}
+	} 
 	
 
 	@Bean
@@ -28,8 +29,8 @@ public class MultipleDBConfig {
 		return new JdbcTemplate(ds);
 	}
 	
-	@Bean
-	@ConfigurationProperties(prefix = "spring.seconddatasource") 
+/*	@Bean
+	@ConfigurationProperties(prefix = "spring.datasources.datasource-2") 
 	public DataSource dataSource2() {
 		return DataSourceBuilder.create().build();
 	}
@@ -38,4 +39,5 @@ public class MultipleDBConfig {
 	public JdbcTemplate dataSource2JdbcTemplate( @Qualifier("dataSource2") DataSource ds) {
 		return new JdbcTemplate(ds);
 	} 
+	*/
 } 

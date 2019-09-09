@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.upog.tennis.util.Constant;
+import com.upog.tennis.util.DataSourceFactory;
 import com.upog.tennis.util.Util;
 
 @Repository
@@ -24,15 +25,20 @@ public class DynamicReportRepository {
 	private EntityManager entityManager;
 	
 	@Autowired
+	private DataSourceFactory dataSourceFactory;
+/*	@Autowired
 	private JdbcTemplate dataSource1JdbcTemplate;
 	
 	@Autowired
 	private JdbcTemplate dataSource2JdbcTemplate;
+	*/
 	
 	public List<List<Map<String,Object>>> getDynamicReport(String connectionName,String dynamicReportSQL){
 		
-		 JdbcTemplate jdbcTemplate;
-		 System.out.println("connectionName" + connectionName);
+		System.out.println(Constant.SB_JDBC_TEMPLATE+connectionName); 
+		 JdbcTemplate jdbcTemplate=dataSourceFactory.getJdbcTemplatebyName(connectionName) ;
+		
+	/*	 System.out.println("connectionName" + connectionName);
 		 if ("CITISEARCH".equals(connectionName)) {
 			 jdbcTemplate=dataSource2JdbcTemplate;
 			 System.out.println("The JDBC template is dataSource2JdbcTemplate");
@@ -41,6 +47,7 @@ public class DynamicReportRepository {
 			 jdbcTemplate=dataSource1JdbcTemplate;
 			 System.out.println("The JDBC template is dataSource1JdbcTemplate");
 		 }
+		 */
 		List<List<Map<String,Object>>> result=new ArrayList<List<Map<String,Object>>>();
 		List<Map<String, Object>> resultData=null;
 		List<Map<String, Object>> resultHeader=null;
@@ -55,7 +62,7 @@ public class DynamicReportRepository {
 			result.add(resultHeader);
 			result.add(resultData);
 		}catch(Exception e) {
-			e.printStackTrace();
+			throw e;
 		}
 		 
 		 return result;
@@ -67,8 +74,8 @@ public class DynamicReportRepository {
 			   Map<String,Object> column= new HashMap<String,Object>();
 			   column.put(Constant.GRID_JSON_HEADER_NAME,Util.toCamelCase(columnHeader));
 			   column.put(Constant.GRID_JSON_HEADER_FIELD,columnHeader);
-			   column.put(Constant.GRID_JSON_HEADER_SORT,Constant.TRUE);
-			   column.put(Constant.GRID_JSON_HEADER_FILTER,Constant.TRUE);
+			   column.put(Constant.GRID_JSON_HEADER_SORT,Constant.TRUE_BOOLEAN);
+			   column.put(Constant.GRID_JSON_HEADER_FILTER,Constant.TRUE_BOOLEAN);
 			   result.add(column);
 			}
 		System.out.println("Header --> " + result);

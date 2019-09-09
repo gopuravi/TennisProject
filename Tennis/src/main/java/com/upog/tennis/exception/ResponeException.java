@@ -1,8 +1,8 @@
-package com.citi.report.exception;
+package com.upog.tennis.exception;
 
 import java.util.Date;
 
-import com.citi.report.util.Constant;
+import com.upog.tennis.util.Constant;
 
 public class ResponeException extends Exception {
 	

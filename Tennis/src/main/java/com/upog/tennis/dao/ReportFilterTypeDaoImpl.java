@@ -1,4 +1,4 @@
-package com.citi.report.dao;
+package com.upog.tennis.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.citi.report.model.ReportFilterType;
-import com.citi.report.repository.ReportFilterTypeRepository;
+import com.upog.tennis.model.ReportFilterType;
+import com.upog.tennis.repository.ReportFilterTypeRepository;
 
 @Component
 public class ReportFilterTypeDaoImpl {

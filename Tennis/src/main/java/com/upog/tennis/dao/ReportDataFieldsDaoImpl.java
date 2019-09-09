@@ -28,8 +28,8 @@ public class ReportDataFieldsDaoImpl {
 		
 	}
 	
-	public List<ReportDataFields> retrieveFieldsbyReportName( String reportName){
-		return reportDataFieldsRepository.retrieveFieldsbyReportName(reportName);
+	public List<ReportDataFields> retrieveFieldsbyReportIdentifier( String reportIdentifier){
+		return reportDataFieldsRepository.retrieveFieldsbyReportIdentifier(reportIdentifier);
 		
 	}
 

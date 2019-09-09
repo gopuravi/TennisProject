@@ -1,4 +1,4 @@
-package com.citi.report.model;
+package com.upog.tennis.model;
 
 import java.util.List;
 import java.util.Set;

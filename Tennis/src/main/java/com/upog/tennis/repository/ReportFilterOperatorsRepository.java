@@ -1,8 +1,8 @@
-package com.citi.report.repository;
+package com.upog.tennis.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.citi.report.model.ReportFilterOperators;
+import com.upog.tennis.model.ReportFilterOperators;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;

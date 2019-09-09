@@ -14,11 +14,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestController
 public class CustomResponseEntityExceptionHandler  extends ResponseEntityExceptionHandler{
 	
-	@ExceptionHandler(ExceptionRespone.class)
-	public final ResponseEntity<Object> handleExceptionResponse
-	(Exception ex, WebRequest request){
-		ExceptionRespone exceptionRespone=new ExceptionRespone(new Date(),ex.getMessage(),request.getDescription(false));		
-		return new ResponseEntity(exceptionRespone,HttpStatus.INTERNAL_SERVER_ERROR);
+	@ExceptionHandler(ResponeException.class)
+	public final ResponseEntity<Object> handleExceptionResponse(Exception ex){		
+		return new ResponseEntity(ex,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-
-}
+ 
+}  
+ 
