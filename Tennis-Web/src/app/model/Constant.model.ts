@@ -10,10 +10,11 @@ export  class Constant{
 
     public EMPTY:string="";
 
-    public SERVER_IP:string="10.108.144.30";
+    public SERVER_IP:string="localhost";
     public SERVER_PORT:string="9090";
     public SERVER_PROTOCOL:string="http";
-    public APP_CONTEXT:string="reports";
+    public APP_CONTEXT:string="tennis";
+    public DEFAULT_DATABASEs:string="DBTENNIS";
 
     public  URL_ADD_REPORT:string="https://ng-complete-guide-c56d3.firebaseio.com/posts.json";
     public  URL_BASE:string= this.SERVER_PROTOCOL+"://"+this.SERVER_IP+":"+this.SERVER_PORT+"/"+  this.APP_CONTEXT+"/";

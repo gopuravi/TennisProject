@@ -15,7 +15,7 @@ import com.upog.tennis.model.ReportFilterType;
 import com.upog.tennis.util.DataSourceFactory; 
 
 @Component
-public class ReportInitService {
+public class TennisInitService {
 	
 	@Autowired
 	ReportFilterTypeDaoImpl reportFilterTypeDaoImpl;

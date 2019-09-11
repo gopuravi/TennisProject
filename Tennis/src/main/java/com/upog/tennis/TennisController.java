@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.upog.tennis.service.ReportInitService;
-import com.upog.tennis.service.ReportService;
+import com.upog.tennis.service.TennisInitService;
+import com.upog.tennis.service.TennisService;
 import com.upog.tennis.util.Constant;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -39,14 +39,14 @@ import com.upog.tennis.model.ReportFilterType;
  * all the User Preferences.
  */
 @Controller
-public class ReportController  {
+public class TennisController  {
 	private static final long serialVersionUID = 1L;
 	
 	@Autowired
-	private ReportService reportService;
+	private TennisService reportService;
 	
 	@Autowired  
-	private ReportInitService reportInitService;
+	private TennisInitService reportInitService;
 	
 	@RequestMapping(method=RequestMethod.GET, path="/reportFilterType")
 	@ResponseBody

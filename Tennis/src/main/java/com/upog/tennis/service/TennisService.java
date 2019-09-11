@@ -24,7 +24,7 @@ import com.upog.tennis.util.Constant;
 import com.upog.tennis.util.Util;
 
 @Component
-public class ReportService {
+public class TennisService {
 	private static List<ReportDataSource> reportList=new ArrayList<ReportDataSource>();
 	
 	@Autowired

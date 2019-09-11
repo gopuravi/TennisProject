@@ -23,6 +23,7 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { QueryBuilderModule } from "angular2-query-builder";
 import { sqlBuilderComponenet } from './CompSqlBuilder/sqlBuilder.component';
 import { AlertCompoenent } from './CompShared/CompAlert/alert.componenet';
+import { ReportNameFilter } from './pipe/ReportNameFilter.pipe';
 
 
 
@@ -37,7 +38,7 @@ import { AlertCompoenent } from './CompShared/CompAlert/alert.componenet';
     ,dynamicReportComponenet
     ,sqlBuilderComponenet
     ,AlertCompoenent
-    //,ReportNameFilter 
+    ,ReportNameFilter
 
   ],
   imports: [

@@ -12,12 +12,12 @@ spring:
 # ===============================
 # = Hibernate datasource
 # ===============================
- datasources:
-  datasource-1:  
-   jdbc-url: jdbc:mysql://tennis.cnx63aff1prh.us-east-1.rds.amazonaws.com:3306/tennis
+ datasource:
+   url: jdbc:mysql://tennis.cnx63aff1prh.us-east-1.rds.amazonaws.com:3306/tennis
    username: admin
    password: tennis123
    name: DBTENNIS 
+   driver-class-name: com.mysql.jdbc.Driver
   
 
    
