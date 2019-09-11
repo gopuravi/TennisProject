@@ -1,0 +1,26 @@
+.cs-bottom-padding {    
+    padding-bottom: 5px;
+    display:inline-block;
+  }  
+
+
+  .navbar-nav li:hover > ul.dropdown-menu {
+    display: block;
+}
+.dropdown-submenu {
+    position:relative;  
+}
+.dropdown-submenu>.dropdown-menu {
+    top:0;
+    /*left:-100%;*/
+    left:-10rem; /* 10rem is the min-width of dropdown-menu */
+    margin-top:-3px;
+} 
+   
+
+/* rotate caret on hover */
+.dropdown-menu > li > a:hover:after {
+    text-decoration: underline;
+   
+    transform: rotate(-90deg); 
+} 
