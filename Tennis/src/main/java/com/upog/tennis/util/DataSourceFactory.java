@@ -31,12 +31,12 @@ public class DataSourceFactory implements BeanFactoryAware {
 		
 	public void loadConnection(){
 		if(connectionList==null) {
-			connectionList= new ArrayList<Connection>(); 
-					//(ArrayList<Connection>) connectionDaoImpl.retrieveAllConnection();
-			Connection connection = new Connection(1, "DBTENNIS",
+			connectionList= //new ArrayList<Connection>(); 
+					(ArrayList<Connection>) connectionDaoImpl.retrieveAllConnection();
+		/*	Connection connection = new Connection(1, "DBTENNIS",
 					"jdbc:mysql://tennis.cnx63aff1prh.us-east-1.rds.amazonaws.com:3306/tennis",
 					"admin","tennis123"); 
-			connectionList.add(connection); 
+			connectionList.add(connection); */
 		}
 		
 		System.out.println("The connecion list " + connectionList);
