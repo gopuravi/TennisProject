@@ -107,7 +107,7 @@ public class TennisController  {
 		
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, path="/connectionList")
+	@RequestMapping(method=RequestMethod.GET, path="/connectionList") 
 	@ResponseBody
 	public List<Connection> getConnectionList() {
 		 return reportInitService.getConnectionList();

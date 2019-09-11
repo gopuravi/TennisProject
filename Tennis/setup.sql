@@ -29,6 +29,8 @@ docker ps -a
    21  docker rm -f 1731ae6e919c
    24  docker run -it -p 8080:8080 -v tennis.war:/usr/local/tomcat/webapps/tennis.war -d tomcat:8.0
    
+   docker run -it -p 8080:8080 -d tomcat:8.0
+   
  to check if deploy file is copied
  [root@ip-172-31-27-187 tmp]# docker ps -a
 [root@ip-172-31-27-187 tmp]# docker exec -it ec23aac47bae bash
