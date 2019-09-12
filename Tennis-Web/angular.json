@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Reports": {
+    "Tennis": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Reports",
+            "outputPath": "dist/Tennis",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,18 +73,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Reports:build"
+            "browserTarget": "Tennis:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Reports:build:production"
+              "browserTarget": "Tennis:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Reports:build"
+            "browserTarget": "Tennis:build"
           }
         },
         "test": {
@@ -113,7 +113,7 @@
               "e2e/tsconfig.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**" 
             ]
           }
         },
@@ -121,15 +121,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Reports:serve"
+            "devServerTarget": "Tennis:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Reports:serve:production"
+              "devServerTarget": "Tennis:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "Reports"
+  "defaultProject": "Tennis"
 }

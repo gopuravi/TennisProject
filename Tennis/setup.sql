@@ -46,6 +46,8 @@ player
 	sex
 	photo
 	level
+	Rating
+	Tournament Rating
 
 Address
 	streetAdress1
@@ -62,30 +64,45 @@ match
 	playerid3
 	playerid4
 	MatchTypeId
+	Name
 	result
-	scoreid
+	score_id
+	tournament_id
 	comments
 	court_id
-	scheduleid
+	schedule_id
+	media_id
+	
+Media
+	id
+	Image link
+	Video link
+	comments
+
 
 scheudle
-	date
-	placeid
+	id
+	From date
+	To date
+	place_id
 	status
 
 court
-	court id
-	court name
-	place
+	id
+	name
+	place id
 	active
 	court type
 	access type
+	Rating[1-5]
 
 	
 tournamnet
-tournament name
+id
+name
 List<player_id>
-prizer amount
+prize amount
+Entry Fee
 winner
 runner
 List<Matches>
@@ -103,7 +120,7 @@ GameType
 MatchType
 	Reugular
 	Tornament-league
-	doubles-playOff
+	Tornament-playOff
 
 ResultType
 	Completed
@@ -112,6 +129,16 @@ ResultType
 	
 
 score
+id 
+winner
+runner
+set1
+set2
+set3
+set4
+set5
+
+
 
 
 playoff

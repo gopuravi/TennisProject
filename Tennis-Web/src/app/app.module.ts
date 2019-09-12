@@ -13,12 +13,12 @@ import { createReportComponenet } from './CompCreateReport/createReport.componen
 import { dynamicReportComponenet } from './CompDynamicReport/dynamicReport.component';
 import { AppDataService } from './service/AppData.service';
 import { LoggingService } from './service/Logging.service'; 
-import { AppData } from './model/AppData.model';
+import { AppData } from './model/AppData.model'; 
 
 //import { ReportNameFilter } from './pipe/reportNameFilter.pipe';
 
 // Add on Modules
-import { AgGridModule } from 'ag-grid-angular';
+import { AgGridModule } from 'ag-grid-angular';  
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { QueryBuilderModule } from "angular2-query-builder";
 import { sqlBuilderComponenet } from './CompSqlBuilder/sqlBuilder.component';
