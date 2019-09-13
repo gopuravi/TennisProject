@@ -15,6 +15,7 @@ public class TennisApplication {
 	TennisInitService tennisInitService;
 
 	public static void main(String[] args) {
+		System.out.println("Application starting");
 		SpringApplication.run(TennisApplication.class, args);
 	}
 	
