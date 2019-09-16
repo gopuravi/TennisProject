@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { SidebarModule } from 'ng-sidebar';  
 
 // Appl;cation Module
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { QueryBuilderModule } from "angular2-query-builder";
 import { sqlBuilderComponenet } from './CompSqlBuilder/sqlBuilder.component';
 import { AlertCompoenent } from './CompShared/CompAlert/alert.componenet';
 import { ReportNameFilter } from './pipe/ReportNameFilter.pipe';
+import { CustomSideBar } from './CompShared/CompCustomSideBar/CustomSideBar.coponenet';
 
 
 
@@ -38,6 +40,7 @@ import { ReportNameFilter } from './pipe/ReportNameFilter.pipe';
     ,dynamicReportComponenet
     ,sqlBuilderComponenet
     ,AlertCompoenent
+    ,CustomSideBar
     ,ReportNameFilter
 
   ],
@@ -48,7 +51,7 @@ import { ReportNameFilter } from './pipe/ReportNameFilter.pipe';
     FormsModule,
     NgbTypeaheadModule,
     QueryBuilderModule,
-    
+    SidebarModule.forRoot(),
     AgGridModule.withComponents([])
     
   ],
@@ -56,4 +59,4 @@ import { ReportNameFilter } from './pipe/ReportNameFilter.pipe';
   
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { }  

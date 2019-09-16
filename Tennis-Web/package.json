@@ -1,5 +1,5 @@
 {
-  "name": "Tennis", 
+  "name": "Tennis",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -27,6 +27,7 @@
     "angular2-query-builder": "^0.4.2",
     "bootstrap": "^4.0.0",
     "jquery": "^3.0.0",
+    "ng-sidebar": "^9.0.0",
     "popper.js": "^1.12.3",
     "rxjs": "~6.4.0",
     "save": "^2.4.0",

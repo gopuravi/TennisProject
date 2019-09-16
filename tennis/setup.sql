@@ -1,4 +1,4 @@
-ssh -i Gopu23.pem ec2-user@54.172.43.179
+ssh -i Gopu23.pem ec2-user@52.91.246.69
 [ec2-user@ip-172-31-27-187 /]$ sudo -i
 [root@ip-172-31-27-187 ~]# yum install docker
 
@@ -22,12 +22,12 @@ to kill services running in docker
 docker rm -f 583699aeb65a
 
 TO Scp file
-scp -i Gopu23.pem D:\Software\Eclipse-2019-06\workspace\Git\Tennis\target\tennis.war ec2-user@54.172.43.179:/tmp
+scp -i Gopu23.pem D:\Software\Eclipse-2019-06\workspace\Git\tennis\target\tennis-0.0.1-SNAPSHOT.war ec2-user@54.172.43.179:/tmp
 
 to deploy war
 docker ps -a
    21  docker rm -f 1731ae6e919c
-   24  docker run -it -p 8080:8080 -v tennis.war:/usr/local/tomcat/webapps/tennis.war -d tomcat:8.0
+   24  docker run -it -p 80:8080 -v /tmp/tennis-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps/tennis.war -d tomcat:9.0
    
    docker run -it -p 8080:8080 -d tomcat:8.0
    
@@ -44,18 +44,11 @@ player
 	phoneNumber
 	Address
 	sex
-	photo
+	media_id
 	level
 	Rating
 	Tournament Rating
 
-Address
-	streetAdress1
-	streetAdress2
-	city
-	state
-	country
-	zip
 
 
 match
@@ -72,29 +65,14 @@ match
 	court_id
 	schedule_id
 	media_id
+	played_time
+	created_time
 	
-Media
-	id
-	Image link
-	Video link
-	comments
 
 
-scheudle
-	id
-	From date
-	To date
-	place_id
-	status
 
-court
-	id
-	name
-	place id
-	active
-	court type
-	access type
-	Rating[1-5]
+
+
 
 	
 tournamnet
@@ -107,25 +85,13 @@ winner
 runner
 List<Matches>
 
-place
-	name
-	address
 
 
-GameType
-	singles
-	mixed
-	doubles
+
+
 	
-MatchType
-	Reugular
-	Tornament-league
-	Tornament-playOff
 
-ResultType
-	Completed
-	notstarted
-	notCompleted
+	
 	
 
 score
@@ -141,4 +107,31 @@ set5
 
 
 
-playoff
+Address
+ADDRESS_ID
+	streetAdress1
+	streetAdress2
+	city
+	state
+	country
+	zip
+	
+	Media
+	id
+	Image link
+	Video link
+	comments
+	
+	court
+	id
+	name
+	place id
+	active
+	court type
+	access type
+	Rating[1-5]
+	
+	GameType
+	singles
+	mixed
+	doubles

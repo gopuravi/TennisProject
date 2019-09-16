@@ -19,8 +19,9 @@ export class dynamicReportComponenet implements OnInit{
    reportList:Array<string>;
    columnDefs=[];
    rowData=[]; 
-    selectedConnection:any="ANALYZER";
+    selectedConnection:any="DBTENNIS";
     errorObj: any = null;
+    connectionList={};
     
 
     @ViewChild('dynamicSQLInput', { static: false }) dynamicSQLInputRef: ElementRef;    
@@ -32,26 +33,24 @@ export class dynamicReportComponenet implements OnInit{
         console.log(this.appData.reportlist);
         this.reportList=this.appData.reportlist;       
         console.log("Inside Dynamic Component Init4 " + this.reportList );
-      //  this.getConnectionList();
+        this.getConnectionList();
 
     } 
     getConnectionList(){
         this.appDataService.getConnectionList().subscribe( responseData=>{
 
-            var data = JSON.stringify(responseData);
-            let option;
-            for (let i = 0; i < data.length; i++) {
-            option = document.createElement('option');
-            option.text = data[i]['connectionId'];
-            option.value = data[i]['connectionName'];            
-            this.logService.log(option);
-            }
+          console.log("The connection list is " , responseData);
+          this.connectionList=responseData;
+         /* this.connectionList.forEach((item) => {
+            console.log(item['connectionName']); 
+          
+          });  */ 
 
-           // this.appData.connectionList=responseData; 
+         
         },error =>{
             this.logService.error("check " + error.message); 
         });
-        this.logService.log("inside createReport" + this.appData.reportlist); 
+        this.logService.log("inside getConnectionList" ); 
         
     }
 
@@ -74,16 +73,10 @@ export class dynamicReportComponenet implements OnInit{
        console.log("To be Implemented");        
       }
 
-      getOrders() {
-        return [
-          { connectionId: '1', connectionName: 'ANALYZER' },
-          { connectionId: '2', connectionName: 'CITISEARCH' },
-
-        ];
-      }
+     
 
       onHandleError() {
         this.errorObj = null;
       }
  
-}
+} 

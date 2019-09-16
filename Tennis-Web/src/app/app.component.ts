@@ -22,4 +22,10 @@ export class AppComponent {
     console.log(this.loadedFeature);
     this.loadedFeature=feature; 
   }
+
+  private _opened: boolean = false;
+ 
+  private _toggleSidebar() {
+    this._opened = !this._opened;
+  }
 }
