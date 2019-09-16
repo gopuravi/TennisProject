@@ -1,14 +1,19 @@
 package com.upog.tennis.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Formula;
 
 @Entity
 @Table(name = "MATCH_DETAILS")
@@ -56,11 +61,11 @@ public class MatchDetails {
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "GAME_TYPE_ID", referencedColumnName = "GAME_TYPE_ID")
-    private MatchType gameType;
+    private GameType gameType;
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "RESULT_TYPE_ID", referencedColumnName = "RESULT_TYPE_ID")
-    private MatchType resultType;
+    private ResultType resultType;
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "TOURNAMENT_ID", referencedColumnName = "TOURNAMENT_ID")
@@ -74,9 +79,10 @@ public class MatchDetails {
     @JoinColumn(name = "COURT_ID", referencedColumnName = "COURT_ID")
     private Court court;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "MEDIA_ID", referencedColumnName = "MEDIA_ID")
-    private Media media;
+	@OneToMany
+	//@JoinColumn( name = "MEDIA_ID", referencedColumnName = "MEDIA_ID"    )
+	@Formula("SELECT * FROM MEDIA WHERE MEDIA_ID = MEDIA_ID")
+	private List<Media> media= new ArrayList<Media>();
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "SCHEDULE_ID_1", referencedColumnName = "SCHEDULE_ID")
@@ -188,19 +194,19 @@ public class MatchDetails {
 		this.matchType = matchType;
 	}
 
-	public MatchType getGameType() {
+	public GameType getGameType() {
 		return gameType;
 	}
 
-	public void setGameType(MatchType gameType) {
+	public void setGameType(GameType gameType) {
 		this.gameType = gameType;
 	}
 
-	public MatchType getResultType() {
+	public ResultType getResultType() {
 		return resultType;
 	}
 
-	public void setResultType(MatchType resultType) {
+	public void setResultType(ResultType resultType) {
 		this.resultType = resultType;
 	}
 
@@ -228,11 +234,12 @@ public class MatchDetails {
 		this.court = court;
 	}
 
-	public Media getMedia() {
+	public List<Media> getMedia() {
 		return media;
 	}
 
-	public void setMedia(Media media) {
+
+	public void setMedia(List<Media> media) {
 		this.media = media;
 	}
 

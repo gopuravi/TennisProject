@@ -8,10 +8,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import com.upog.tennis.model.Media;
+
 
 import org.hibernate.annotations.Formula;
+import org.hibernate.annotations.JoinFormula;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -70,8 +74,11 @@ public class Player {
     @JoinColumn(name = "SEX_NAME", referencedColumnName = "SEX_NAME")
     private Sex sex;
 	
+	//@OneToMany ( mappedby = "media.strObjectGUID"    )
+	
+	@OneToMany
 	@Formula("SELECT * FROM MEDIA WHERE MEDIA_ID = MEDIA_ID")
-	private List<Media> media= new ArrayList<>();
+	private List<Media> media= new ArrayList<Media>();
 	
 	
 	public Player() {}

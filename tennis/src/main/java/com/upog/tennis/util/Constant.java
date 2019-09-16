@@ -33,12 +33,7 @@ public abstract class Constant {
 	public static final String GROUP_BY="GROUP BY";
 	public static final String HAVING="HAVING";
 	
-	//QUERY FILTER CONFIG	
-	public static final String FILER_CONFIG_ATT_NAME="name";
-	public static final String FILER_CONFIG_ATT_TYPE="type";
-	public static final String FILER_CONFIG_ATT_OPERATORS="operators";
-	public static final String FILER_CONFIG_ATT_OPTIONS="options";
-	
+		
 	// ERROR Message
 	public static final String ERR_DATA_NOT_AVAILABLE="Error message not available - Null"; 
 	

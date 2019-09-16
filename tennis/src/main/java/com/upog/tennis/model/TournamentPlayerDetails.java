@@ -17,9 +17,7 @@ public class TournamentPlayerDetails {
 	@Id 
 	@Column(name = "TOURNAMENT_PLAYER_ID")
 	int id;
-	
-	@Column(name = "PLAYER_ID")
-	int playerId;
+
 	@Column(name = "RANKING")
 	int ranking;
 	 
@@ -53,13 +51,6 @@ public class TournamentPlayerDetails {
 		this.id = id;
 	}
 
-	public int getPlayerId() {
-		return playerId;
-	}
-
-	public void setPlayerId(int playerId) {
-		this.playerId = playerId;
-	}
 
 	public int getRanking() {
 		return ranking;
@@ -127,7 +118,7 @@ public class TournamentPlayerDetails {
 
 	@Override
 	public String toString() {
-		return "TournamentPlayerDetails [id=" + id + ", playerId=" + playerId + ", ranking=" + ranking + ", matchWon="
+		return "TournamentPlayerDetails [id=" + id +  ", ranking=" + ranking + ", matchWon="
 				+ matchWon + ", matchLost=" + matchLost + ", setWon=" + setWon + ", setLost=" + setLost + ", gameWon="
 				+ gameWon + ", gameLost=" + gameLost + ", player=" + player + "]";
 	}
